@@ -7,18 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: ss_15_tps_80
-        uses: danielpos178/websnap@main
-        with:
-          url: "https://docs.github.com/en/get-started/start-your-journey/finding-inspiration-on-github"
-          save_path: "/docs/images"
-          file_format: webp
-          file_name: ss_15_tps_80
-          scroll_step: 15
-          time_per_frame: 80
-          window_width: 1280
-          window_height: 720
-      - name: ss_25_tps_100
+      
+      - name: Standard Scroll (GIF)
         uses: danielpos178/websnap@main
         with:
           url: "https://docs.github.com/en/get-started/start-your-journey/finding-inspiration-on-github"
@@ -28,37 +18,61 @@ jobs:
           time_per_frame: 100
           window_width: 1280
           window_height: 720
-      - name: ss_50_tps_50
+          
+      - name: WebP Format
         uses: danielpos178/websnap@main
         with:
           url: "https://docs.github.com/en/get-started/start-your-journey/finding-inspiration-on-github"
           save_path: "/docs/images"
-          file_name: ss_50_tps_50
-          scroll_step: 50
-          time_per_frame: 50
-          window_width: 1280
-          window_height: 720
-      - name: ss_50_tps_100
-        uses: danielpos178/websnap@main
-        with:
-          url: "https://docs.github.com/en/get-started/start-your-journey/finding-inspiration-on-github"
-          save_path: "/docs/images"
-          file_name: ss_50_tps_100
+          file_format: webp
+          file_name: webp_demo
           scroll_step: 50
           time_per_frame: 100
           window_width: 1280
           window_height: 720
-      - name: ss_50_tps_200
+          
+      - name: Dark Mode & Hide Elements
         uses: danielpos178/websnap@main
         with:
           url: "https://docs.github.com/en/get-started/start-your-journey/finding-inspiration-on-github"
           save_path: "/docs/images"
-          file_name: ss_50_tps_200
+          file_name: dark_mode_demo
+          dark_mode: true
+          hide_elements: "header, .cookie-banner"
           scroll_step: 50
-          time_per_frame: 200
+          time_per_frame: 100
           window_width: 1280
           window_height: 720
-      - name: animated_no_scroll
+
+      - name: Partial Scroll & Custom Resize
+        uses: danielpos178/websnap@main
+        with:
+          url: "https://docs.github.com/en/get-started/start-your-journey/finding-inspiration-on-github"
+          save_path: "/docs/images"
+          file_name: partial_scroll_demo
+          start_y: 500
+          stop_y: 1500
+          final_width: 800
+          final_height: 600
+          resizing_filter: "BICUBIC"
+          scroll_step: 50
+          time_per_frame: 100
+          window_width: 1280
+          window_height: 720
+
+      - name: Start Delay
+        uses: danielpos178/websnap@main
+        with:
+          url: "https://docs.github.com/en/get-started/start-your-journey/finding-inspiration-on-github"
+          save_path: "/docs/images"
+          file_name: delayed_demo
+          start_delay: 2000
+          scroll_step: 50
+          time_per_frame: 100
+          window_width: 1280
+          window_height: 720
+
+      - name: No Scroll Animation
         uses: danielpos178/websnap@main
         with:
           url: "https://github.com/signup"
@@ -70,6 +84,7 @@ jobs:
           number_of_frames: 50
           window_width: 1280
           window_height: 720
+
       - name: Archive GIFs
         uses: actions/upload-artifact@v4
         with:
