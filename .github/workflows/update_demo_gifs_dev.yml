@@ -67,7 +67,7 @@ jobs:
       - name: animated_no_scroll
         uses: danielpos178/website-to-gif@main
         with:
-          url: "https://blobmixer.14islands.com/"
+          url: "https://github.com/home"
           save_path: "/docs/images"
           file_name: animated_no_scroll
           no_scroll: true
